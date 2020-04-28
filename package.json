@@ -1,0 +1,11 @@
+{
+  "name": "mfe-sandbox",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "nginx": "docker run --name mynginx1 -d -p 3009:80 -v $PWD/nginx.conf:/etc/nginx/nginx.conf nginx"
+  },
+  "author": "",
+  "license": "ISC"
+}

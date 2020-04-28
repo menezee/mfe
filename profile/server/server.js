@@ -11,7 +11,7 @@ const PORT = 3001;
 
 const app = express();
 
-app.use("^/$", (req, res, next) => {
+app.use("/profile", (req, res, next) => {
   fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
     if (err) {
       console.log(err);
@@ -20,7 +20,11 @@ app.use("^/$", (req, res, next) => {
     return res.send(
       data.replace(
         '<div id="root"></div>',
-        `<div id="root">
+        `
+        <div id="products">
+          <!--# include virtual="/products" -->
+        </div>
+        <div id="root">
           ${ReactDOMServer.renderToString(<App />)}
         </div>`
       ),
@@ -28,7 +32,7 @@ app.use("^/$", (req, res, next) => {
   });
 });
 
-app.use(express.static(path.resolve(__dirname, '..', 'build')))
+app.use(express.static(path.resolve(__dirname, '..', 'build/')))
 
 app.listen(PORT, () => {
   console.log(`App launched on ${PORT}`);

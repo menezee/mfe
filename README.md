@@ -32,7 +32,6 @@ this will spin up profile on http://localhost:3001/profile
 
 on a third shell, run:
 ```
-cd ..
 npm run nginx
 ```
 

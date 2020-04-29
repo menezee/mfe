@@ -1,6 +1,7 @@
 {
   "name": "profile",
   "version": "0.1.0",
+  "homepage": "http://localhost:3009/profile-static",
   "private": true,
   "dependencies": {
     "@babel/preset-env": "^7.9.5",

@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <main>
-        <div className="App-header">
+        <div className="products">
           {
             products.map(p => (
               <div

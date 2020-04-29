@@ -17,10 +17,13 @@ app.use("/profile", (req, res, next) => {
       console.log(err);
       return res.status(500).send("Some error happened");
     }
-    return res.send(`
-      <div id="root">
-        ${ReactDOMServer.renderToString(<App />)}
-      </div>`
+    return res.send(
+      data.replace(
+        '<div id="root"></div>',
+        `<div id="root">
+          ${ReactDOMServer.renderToString(<App />)}
+        </div>`
+      )
     );
   });
 });

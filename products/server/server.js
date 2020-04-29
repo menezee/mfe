@@ -10,6 +10,7 @@ import App from "../src/App";
 const PORT = 3000;
 
 const app = express();
+app.disable('etag');
 
 app.use("/products", (req, res, next) => {
   fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
@@ -18,15 +19,19 @@ app.use("/products", (req, res, next) => {
       return res.status(500).send("Some error happened");
     }
     return res.send(
-      data.replace('<div id="root"></div>',
-        `
-        <div id="profile">
-          <!--# include virtual="/profile" -->
-        </div>
-        <div id="root">
-          ${ReactDOMServer.renderToString(<App />)}
-        </div>`
-      )
+      data
+        .replace(
+          '<div id="products"></div>',
+          `<div id="products">
+            ${ReactDOMServer.renderToString(<App />)}
+          </div>`
+        )
+        .replace(
+          '<div id="profile"></div>',
+          `<div id="profile">
+            <!--# include virtual="/profile" -->
+          </div>`
+        )
     );
   });
 });

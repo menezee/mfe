@@ -18,8 +18,7 @@ app.use("/products", (req, res, next) => {
       return res.status(500).send("Some error happened");
     }
     return res.send(
-      data.replace(
-        '<div id="root"></div>',
+      data.replace('<div id="root"></div>',
         `
         <div id="profile">
           <!--# include virtual="/profile" -->
@@ -27,7 +26,7 @@ app.use("/products", (req, res, next) => {
         <div id="root">
           ${ReactDOMServer.renderToString(<App />)}
         </div>`
-      ),
+      )
     );
   });
 });

@@ -36,7 +36,7 @@ app.use("/products", (req, res, next) => {
   });
 });
 
-app.use(express.static(path.resolve(__dirname, '..', 'build/')))
+app.use('/products-static', express.static(path.resolve(__dirname, '..', 'build/')))
 
 app.listen(PORT, () => {
   console.log(`App launched on ${PORT}`);

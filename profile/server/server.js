@@ -19,8 +19,8 @@ app.use("/profile", (req, res, next) => {
     }
     return res.send(
       data.replace(
-        '<div id="root"></div>',
-        `<div id="root">
+        '<div id="internal-profile"></div>',
+        `<div id="internal-profile">
           ${ReactDOMServer.renderToString(<App />)}
         </div>`
       )
@@ -28,7 +28,7 @@ app.use("/profile", (req, res, next) => {
   });
 });
 
-app.use(express.static(path.resolve(__dirname, '..', 'build/')))
+app.use('/profile-static', express.static(path.resolve(__dirname, '..', 'build/')))
 
 app.listen(PORT, () => {
   console.log(`App launched on ${PORT}`);
